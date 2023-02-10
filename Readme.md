@@ -1,9 +1,8 @@
-# NativeBase Expo Template
+# COMP7506 Group Project
 
-The official NativeBase template for [Expo](https://docs.expo.io/)
-
-## Usage
+Usage
 
 ```sh
-expo init my-app --template @native-base/expo-template
+npm install
+expo start --android
 ```
