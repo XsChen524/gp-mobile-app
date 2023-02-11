@@ -11,6 +11,7 @@ import MenuItem from "../components/settings/MenuItem";
  * Flatlist MenuItem onclick TBD
  */
 const Settings = () => {
+    console.log('hello');
   const data = [
     {
       id: 1,
