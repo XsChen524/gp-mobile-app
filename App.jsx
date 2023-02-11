@@ -5,7 +5,7 @@ import AppTabNavigation from './src/router/router';
 function App() {
 	return (
 		<NavigationContainer>
-			<AppTabNavigation	/>
+			<AppTabNavigation />
 		</NavigationContainer>
 	);
 }

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from "@expo/vector-icons";
 import HomeScreen from '../screens/HomeScreen';
-import DetailsScreen from '../screens/DetailScreen';
+import SettingScreen from '../screens/SettingScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -24,7 +24,7 @@ function AppTabNavigation() {
             />
             <Tab.Screen
                 name="Settings"
-                component={DetailsScreen}
+                component={SettingScreen}
                 options={{
                     tabBarIcon: ({ color, size }) => (
                         <Ionicons
