@@ -5,13 +5,12 @@ import {
   FlatList,
 } from "native-base";
 import * as React from "react";
-import MenuItem from "../components/settings/MenuItem";
+import MenuItem from "../../components/settings/MenuItem";
 
 /**
  * Flatlist MenuItem onclick TBD
  */
 const Settings = () => {
-    console.log('hello');
   const data = [
     {
       id: 1,

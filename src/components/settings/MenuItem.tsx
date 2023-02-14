@@ -18,8 +18,9 @@ interface MenuItemProps {
   componentName: string;
 }
 
-const MenuItem = ({ func, componentName, onclick }: MenuItemProps) => {
-  console.log();
+const MenuItem:React.FC<MenuItemProps> = (props: MenuItemProps) => {
+  const { func, id, componentName, onclick } = props;
+  
   return (
     <Box borderBottomWidth="1" borderColor="coolGray.200" pl="4" pr="5" py="4">
       <Pressable onPress={onclick}>
