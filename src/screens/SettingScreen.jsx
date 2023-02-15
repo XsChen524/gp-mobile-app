@@ -1,11 +1,15 @@
+/* eslint-disable no-unused-vars */
 import {
   NativeBaseProvider,
   Center,
   Box,
   FlatList,
+  Button,
 } from "native-base";
 import * as React from "react";
-import MenuItem from "../../components/settings/MenuItem";
+import MenuItem from "../components/settings/MenuItem";
+import { useAppSelector, useAppDispatch } from "../redux/hooks";
+import { selectAuthState } from "../auth/AuthSlice";
 
 /**
  * Flatlist MenuItem onclick TBD
@@ -51,6 +55,9 @@ const SettingScreen = () => {
     <NativeBaseProvider>
       <Center>
         <Settings />
+        <Button>
+          Hello
+        </Button>
       </Center>
     </NativeBaseProvider>
   );
