@@ -1,4 +1,4 @@
-import * as SecureStore from 'expo-secure-store'
+import * as Utils from '../utils/utils'
 
 /**
  * 1. post login form, wait for response, dispath and refresh
@@ -10,36 +10,28 @@ import * as SecureStore from 'expo-secure-store'
  * 7. signup, wait for response, redirect
  */
 
-interface signupReturn {
+type signupReturn = {
     status: boolean,
     msg: string,
 }
 
-interface loginData {
+type userData = {
     id: number,
     email: string,
     name: string,
     token: string,
 }
 
-interface loginReturn {
+type loginReturn = {
     status: boolean,
     msg: string,
-    data?: null | loginData,
+    data: undefined | userData,
 }
 
-interface jwtDecodedToken {
+type jwtDecodedToken = {
     id: number,
     email: string,
     iat: number, // Timestamp in millsecond
     exp: number, // Timestamp in millsecond
 }
 
-export const saveTokenToStorage = async (key: string, value: string): Promise<void> => {
-  await SecureStore.setItemAsync(key, value);
-}
-
-export const getTokenFromStorage = async (key: string): Promise<string> => {
-  let result = await SecureStore.getItemAsync(key);
-  return(result);
-}
