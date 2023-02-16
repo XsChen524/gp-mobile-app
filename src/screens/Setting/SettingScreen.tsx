@@ -85,14 +85,13 @@ const LoginButton: React.FunctionComponent<IProps> = (props: IProps) => {
 };
 
 const SettingScreen: React.FunctionComponent<IProps> = (props: IProps) => {
-  const {route, navigation} = props;
   return (
     <NativeBaseProvider>
       <Box borderColor="primary.500" borderWidth={1}>
         <Settings />
         <Divider />
         <Box alignItems="center">
-          <LoginButton route={route} navigation={navigation}/>
+          <LoginButton {...props}/>
         </Box>
       </Box>
     </NativeBaseProvider>
