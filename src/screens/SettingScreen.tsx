@@ -5,11 +5,12 @@ import {
   Box,
   FlatList,
   Button,
+  Divider,
 } from "native-base";
 import * as React from "react";
-import MenuItem from "../components/settings/MenuItem";
+import MenuItem from "../components/MenuItem";
 import { useAppSelector, useAppDispatch } from "../redux/hooks";
-import { selectAuthState } from "../auth/AuthSlice";
+import { selectAuthState, signIn } from "../auth/AuthSlice";
 
 /**
  * Flatlist MenuItem onclick TBD
@@ -38,27 +39,44 @@ const Settings = () => {
     },
   ];
   return (
-    <Box>
+    <Box borderWidth={1} borderColor="primary.500">
       <FlatList
         data={data}
         renderItem={({ item }) => (
-            <MenuItem {...item} onclick={()=>{console.log('Button Pressed: ', item.id)}} />
+          <MenuItem
+            {...item}
+            onclick={() => {
+              console.log("Button Pressed: ", item.id);
+            }}
+          />
         )}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
       />
     </Box>
   );
 };
 
-const SettingScreen = () => {
+const LoginButton: React.FunctionComponent<{}> = () => {
+  const authState = useAppSelector((state) => state.auth);
+  const dispatch = useAppDispatch();
+  return (
+    <Button onPress={() => {
+      console.log(authState);
+      dispatch(signIn('token' || null));
+    }}>Click Me</Button>
+  );
+};
+
+const SettingScreen: React.FunctionComponent<{}> = () => {
   return (
     <NativeBaseProvider>
-      <Center>
+      <Box borderColor="primary.500" borderWidth={1}>
         <Settings />
-        <Button>
-          Hello
-        </Button>
-      </Center>
+        <Divider />
+        <Box alignItems="center">
+          <LoginButton />
+        </Box>
+      </Box>
     </NativeBaseProvider>
   );
 };
