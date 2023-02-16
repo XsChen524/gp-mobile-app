@@ -2,21 +2,14 @@ import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Ionicons } from "@expo/vector-icons";
+import { settingSpace } from '../../typings';
 import HomeScreen from '../screens/HomeScreen';
 import SettingScreen from '../screens/Setting/SettingScreen';
 import LoginScreen from '../screens/Setting/LoginScreen';
 import SignupScreen from '../screens/Setting/SignupScreen';
 
-type AppTabParamList = {
-    Home: undefined,
-    Settings: undefined,
-};
-
-type SettingStackParamList = {
-  SettingStack: undefined;
-  LoginStack: undefined;
-  SignupStack: undefined;
-};
+type AppTabParamList = settingSpace.AppTabParamList;
+type SettingStackParamList = settingSpace.SettingStackParamList;
 
 const Tab = createBottomTabNavigator<AppTabParamList>();
 const SettingStack = createNativeStackNavigator<SettingStackParamList>(); // Create Native Stack Navigator

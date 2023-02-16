@@ -1,13 +1,9 @@
 import * as React from 'react';
 import { Button, NativeBaseProvider, Text } from 'native-base';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { settingSpace } from "../../../typings";
 
-type SettingStackParamList = {
-  SettingStack: undefined;
-  LoginStack:  undefined;
-  SignupStack: undefined;
-};
-
+type SettingStackParamList = settingSpace.SettingStackParamList;
 type IProps = NativeStackScreenProps<SettingStackParamList, "LoginStack">;
 
 const LoginScreen: React.FunctionComponent<IProps> = (props: IProps) => {

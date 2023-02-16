@@ -1,4 +1,6 @@
 /* eslint-disable no-unused-vars */
+import * as React from "react";
+import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import {
   NativeBaseProvider,
   Box,
@@ -6,18 +8,12 @@ import {
   Button,
   Divider,
 } from "native-base";
-import * as React from "react";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { settingSpace } from "../../../typings";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
 import { selectAuthState, signIn } from "../../auth/AuthSlice";
 import MenuItem from "../../components/MenuItem";
 
-type SettingStackParamList = {
-  SettingStack: undefined;
-  LoginStack: undefined;
-  SignupStack: undefined;
-};
-
+type SettingStackParamList = settingSpace.SettingStackParamList;
 type IProps = NativeStackScreenProps<SettingStackParamList, 'SettingStack'>;
 
 /**

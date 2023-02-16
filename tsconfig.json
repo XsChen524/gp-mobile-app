@@ -1,4 +1,9 @@
 {
-  "compilerOptions": {},
+  "compilerOptions": {
+    "typeRoots": [
+      "node_modules/@types",
+      "./typings"
+    ],
+  },
   "extends": "expo/tsconfig.base"
 }
