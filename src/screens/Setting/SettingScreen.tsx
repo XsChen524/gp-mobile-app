@@ -8,12 +8,12 @@ import {
   Button,
   Divider,
 } from "native-base";
-import { settingSpace } from "../../../typings";
+import { routerSpace } from "../../../typings/router";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
 import { selectAuthState, signIn } from "../../auth/AuthSlice";
 import MenuItem from "../../components/MenuItem";
 
-type SettingStackParamList = settingSpace.SettingStackParamList;
+type SettingStackParamList = routerSpace.SettingStackParamList;
 type IProps = NativeStackScreenProps<SettingStackParamList, 'SettingStack'>;
 
 /**

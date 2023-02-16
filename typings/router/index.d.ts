@@ -1,4 +1,4 @@
-export declare namespace settingSpace {
+export declare namespace routerSpace {
     type AppTabParamList = {
         Home: undefined,
         Settings: undefined,
