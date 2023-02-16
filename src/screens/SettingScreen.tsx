@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import {
   NativeBaseProvider,
-  Center,
   Box,
   FlatList,
   Button,
@@ -11,6 +10,7 @@ import * as React from "react";
 import MenuItem from "../components/MenuItem";
 import { useAppSelector, useAppDispatch } from "../redux/hooks";
 import { selectAuthState, signIn } from "../auth/AuthSlice";
+import { saveTokenToStorage, getTokenFromStorage } from "../services/auth";
 
 /**
  * Flatlist MenuItem onclick TBD
@@ -57,13 +57,37 @@ const Settings = () => {
 };
 
 const LoginButton: React.FunctionComponent<{}> = () => {
-  const authState = useAppSelector((state) => state.auth);
+  const authState = useAppSelector(selectAuthState);
   const dispatch = useAppDispatch();
   return (
-    <Button onPress={() => {
-      console.log(authState);
-      dispatch(signIn('token' || null));
-    }}>Click Me</Button>
+    <>
+      <Button
+        onPress={() => {
+          dispatch(signIn("123456" || null));
+          console.log(authState);
+        }}
+      >
+        Click Me
+      </Button>
+      <Button
+        onPress={() => {
+          saveTokenToStorage("token", authState.userToken).then(() =>
+            console.log("stored!")
+          );
+        }}
+      >
+        StoreToken
+      </Button>
+      <Button
+        onPress={() => {
+          getTokenFromStorage("token").then((token) =>
+            console.log("get token:", token)
+          );
+        }}
+      >
+        getToken
+      </Button>
+    </>
   );
 };
 
