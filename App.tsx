@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import AppTabNavigation from "./src/router/router";
 import { store } from './src/redux/store'
 
-function App() {
+const App: React.FunctionComponent<{}> = () => {
 	return (
     <Provider store={store}>
       <NavigationContainer>

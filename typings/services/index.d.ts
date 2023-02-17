@@ -1,5 +1,5 @@
-declare namespace authSpace {
-    type jwtDecodedToken = {
+export declare namespace serviceSpace {
+    type jwtDecodedTokenType = {
         id: number,
         email: string,
         iat: number, // Timestamp in millsecond
