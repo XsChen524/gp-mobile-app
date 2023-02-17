@@ -28,19 +28,19 @@ const MenuItem:React.FC<MenuItemProps> = (props: MenuItemProps) => {
           <Icon
             as={MaterialIcons}
             name={componentName}
-            color={"coolGray.800"}
+            color={"coolGray.600"}
             size={6}
           />
           <VStack>
             <Center>
-              <Text color={"coolGray.800"} fontSize={16}>{func}</Text>
+              <Text color={"coolGray.600"} fontSize={16}>{func}</Text>
             </Center>
           </VStack>
           <Spacer />
           <Icon
             as={Ionicons}
             name={"arrow-forward-sharp"}
-            color="coolGray.800"
+            color="coolGray.600"
             size={6}
           />
         </HStack>

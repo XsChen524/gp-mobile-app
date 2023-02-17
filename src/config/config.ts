@@ -1,4 +1,4 @@
-{
+const config = {
     "url": {
         "env":{
             "dev": "http://localhost:7001"
@@ -11,3 +11,5 @@
         }
     }
 }
+
+export default config;

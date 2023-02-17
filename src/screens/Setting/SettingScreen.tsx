@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import * as React from "react";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import {
@@ -10,7 +9,7 @@ import {
 } from "native-base";
 import { routerSpace } from "../../../typings/router";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
-import { selectAuthState, signIn } from "../../auth/AuthSlice";
+import { selectAuthState, signIn } from "../../redux/AuthSlice";
 import MenuItem from "../../components/MenuItem";
 
 type SettingStackParamList = routerSpace.SettingStackParamList;

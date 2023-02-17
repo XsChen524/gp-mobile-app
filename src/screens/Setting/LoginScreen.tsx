@@ -41,7 +41,7 @@ const LoginForm: React.FunctionComponent<IProps> = (props: IProps) => {
           Forget Password?
         </Link>
       </FormControl>
-      <Button mt="2" color="primary.500">
+      <Button mt="2" height={10} color="primary.500">
         Login
       </Button>
     </>
