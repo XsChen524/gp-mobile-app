@@ -1,5 +1,4 @@
 import * as React from "react";
-import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import {
   NativeBaseProvider,
   Box,
@@ -7,12 +6,12 @@ import {
   Button,
   Divider,
 } from "native-base";
-import { routerSpace } from "../../../typings/router";
+import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
 import { selectAuthState, signIn } from "../../redux/AuthSlice";
 import MenuItem from "../../components/MenuItem";
+import type { SettingStackParamList } from "../../../typings/router";
 
-type SettingStackParamList = routerSpace.SettingStackParamList;
 type IProps = NativeStackScreenProps<SettingStackParamList, 'SettingStack'>;
 
 /**
@@ -90,7 +89,7 @@ const SettingScreen: React.FunctionComponent<IProps> = (props: IProps) => {
         <Settings />
         <Divider />
         <Box alignItems="center">
-          <LoginButton {...props}/>
+          <LoginButton {...props} />
         </Box>
       </Box>
     </NativeBaseProvider>

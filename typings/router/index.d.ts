@@ -1,12 +1,10 @@
-export declare namespace routerSpace {
-    type AppTabParamList = {
-        Home: undefined,
-        Settings: undefined,
-    };
+export type AppTabParamList = {
+    Home: undefined,
+    Settings: undefined,
+};
 
-    type SettingStackParamList = {
-        SettingStack: undefined;
-        LoginStack: undefined;
-        SignupStack: undefined;
-    };
-}
+export type SettingStackParamList = {
+    SettingStack: undefined;
+    LoginStack: undefined;
+    SignupStack: undefined;
+};

@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { Box, Button, Center, FormControl, HStack, Heading, Input, Link, NativeBaseProvider, Text, VStack } from 'native-base';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { routerSpace } from "../../../typings/router";
+import type { SettingStackParamList } from "../../../typings/router";
 
-type SettingStackParamList = routerSpace.SettingStackParamList;
 type IProps = NativeStackScreenProps<SettingStackParamList, "LoginStack">;
 
 const Header: React.FC<IProps> = (props: IProps) => {

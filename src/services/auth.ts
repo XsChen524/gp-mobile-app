@@ -10,20 +10,12 @@ import * as Utils from '../utils/utils'
  * 7. signup, wait for response, redirect
  */
 
-type signupReturn = {
-    status: boolean,
-    msg: string,
-}
+interface SignupForm {
+	name: string;
+	email: string;
+	password: string;
+};
 
-type userData = {
-    id: number,
-    email: string,
-    name: string,
-    token: string,
-}
-
-type loginReturn = {
-    status: boolean,
-    msg: string,
-    data: undefined | userData,
+export const getSignupForm = (signupForm: SignupForm): void => {
+    console.log(signupForm);
 }
