@@ -1,15 +1,16 @@
 const config = {
-    "url": {
-        "env":{
-            "dev": "http://localhost:7001"
-        },
-        "index": "/",
-        "auth": {
-            "index": "/",
-            "signup": "/auth/signup",
-            "login": "/auth/login"
-        }
-    }
-}
+  env: {
+    dev: "http://192.168.1.110:7001",
+    pro: "https://mobile.tracechain.top",
+  },
+  url: {
+    index: "/",
+    auth: {
+      index: "/",
+      signup: "/auth/signup",
+      login: "/auth/login",
+    },
+  },
+};
 
 export default config;

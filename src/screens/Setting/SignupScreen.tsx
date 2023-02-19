@@ -12,8 +12,8 @@ import {
 	useToast,
 } from "native-base";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import type { SettingStackParamList } from "../../../typings/router";
-import { getSignupForm } from "../../services/auth";
+import type { SettingStackParamList } from "../../router";
+import { postSignupForm } from "../../services/auth";
 
 type IProps = NativeStackScreenProps<SettingStackParamList, "SignupStack">;
 type FormState = {
@@ -122,7 +122,17 @@ const SignupForm: React.FunctionComponent<IProps> = (props: IProps) => {
 				<Button marginTop={5} height={10} mt="2" color="primary.500"
 					onPress={() => {
 						if (formState.name != "" && formState.name != "" && formState.password != "") {
-							getSignupForm(formState);
+							postSignupForm(formState).then((res) => {
+								if (res.status == 200){
+									props.navigation.goBack();
+								} else {
+									toast.show({
+										duration: 2000,
+										title: "Signup failed",
+										description: "Please try again."
+									})
+								}
+							})
 						} else {
 							toast.show({
 								duration: 2000,

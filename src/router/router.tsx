@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Ionicons } from "@expo/vector-icons";
 import { HomeScreen, SettingScreen, LoginScreen, SignupScreen } from '../screens';
-import type { AppTabParamList, SettingStackParamList } from "../../typings/router";
+import type { AppTabParamList, SettingStackParamList } from ".";
 
 const Tab = createBottomTabNavigator<AppTabParamList>();
 const SettingStack = createNativeStackNavigator<SettingStackParamList>(); // Create Native Stack Navigator

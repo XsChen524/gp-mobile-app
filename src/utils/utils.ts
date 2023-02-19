@@ -19,3 +19,19 @@ export const getValueFromStorage = async (key: string): Promise<string> => {
   let value = await SecureStore.getItemAsync(key);
   return(value);
 }
+
+/**
+ * Parse the object of request body into UrlEncoded string
+ * @param {T} obj Object of type T
+ * @returns {string} x-www-form-urlencoded request body
+ */
+export const parseUrlEncodedBody = <T> (obj: T): string => {
+  let requestParams: string[] = new Array<string>();
+  Object.keys(obj).forEach((key) => {
+    let encodedKey = encodeURIComponent(key);
+    let encodedValue = encodeURIComponent(obj[key]);
+    requestParams.push(encodedKey + "=" + encodedValue);
+  })
+  let requestBodyParse = requestParams.join("&");
+  return requestBodyParse;
+}

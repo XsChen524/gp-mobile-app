@@ -10,7 +10,7 @@ import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
 import { selectAuthState, signIn } from "../../redux/AuthSlice";
 import MenuItem from "../../components/MenuItem";
-import type { SettingStackParamList } from "../../../typings/router";
+import type { SettingStackParamList } from "../../router";
 
 type IProps = NativeStackScreenProps<SettingStackParamList, 'SettingStack'>;
 

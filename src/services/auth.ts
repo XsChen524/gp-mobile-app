@@ -1,4 +1,6 @@
-import * as Utils from '../utils/utils'
+import config from '../config/config';
+import { NativeSignupForm, EggSignupReturn, SignUpReturn } from '.';
+import { parseUrlEncodedBody } from '../utils/utils';
 
 /**
  * 1. post login form, wait for response, dispath and refresh
@@ -10,12 +12,31 @@ import * as Utils from '../utils/utils'
  * 7. signup, wait for response, redirect
  */
 
-interface SignupForm {
-	name: string;
-	email: string;
-	password: string;
-};
+/**
+ * Async function for posting signup form to server and wait for response
+ * @param {NativeSignupForm} form 
+ * @returns {Promise<SignUpReturn>}
+ */
+export const postSignupForm = async (form: NativeSignupForm): Promise<SignUpReturn> => {
 
-export const getSignupForm = (signupForm: SignupForm): void => {
-    console.log(signupForm);
-}
+	let requestBody = parseUrlEncodedBody<NativeSignupForm>(form);
+
+	let response = await fetch(config.env.pro + config.url.auth.signup, {
+		method: "POST",
+		headers: {
+			Accept: "application/json",
+			"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+		},
+		body: requestBody,
+	});
+
+	let data: EggSignupReturn = await response.json();
+
+	let signupReturn = {
+		status: response.status,
+		responseBody: data,
+	};
+
+	return signupReturn;
+
+};
