@@ -22,7 +22,9 @@
         "react-native"
     ],
     "rules": {
-    },
+		"indent": ["warn", "tab"],
+		"semi": [2, "always"]
+	},
     "settings": {
         "react": {
             "version": "detect"
