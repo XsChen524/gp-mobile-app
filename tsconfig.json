@@ -1,9 +1,7 @@
 {
   "compilerOptions": {
-    "typeRoots": [
-      "node_modules/@types",
-      "./typings"
-    ],
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
   },
   "extends": "expo/tsconfig.base"
 }
