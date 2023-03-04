@@ -13,13 +13,18 @@ import {
 } from "native-base";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import type { SettingStackParamList } from "../../router";
-import { postSignupForm } from "../../services/auth";
+import { postSignupSync } from "../../services/auth";
 
 type IProps = NativeStackScreenProps<SettingStackParamList, "SignupStack">;
 type FormState = {
-	name: null | string;
-	email: null | string;
-	password: null | string;
+	name: undefined | string;
+	email: undefined | string;
+	password: undefined | string;
+};
+type FormStateNotUndefined = {
+	name: string;
+	email: string;
+	password: string;
 };
 
 const formReducer = (
@@ -42,9 +47,9 @@ const Header: React.FC<IProps> = (props: IProps) => {
 
 const SignupForm: React.FunctionComponent<IProps> = (props: IProps) => {
 	const initialState: FormState = {
-		name: "",
-		email: "",
-		password: "",
+		name: undefined,
+		email: undefined,
+		password: undefined,
 	};
 
 	const [formState, formDispatch] = useReducer(formReducer, initialState);
@@ -121,21 +126,21 @@ const SignupForm: React.FunctionComponent<IProps> = (props: IProps) => {
 			{isRePassword ? (
 				<Button marginTop={5} height={10} mt="2" color="primary.500"
 					onPress={() => {
-						if (formState.name != "" && formState.name != "" && formState.password != "") {
-							postSignupForm(formState).then((res) => {
-								if (res.status == 200){
+						if (Object.entries(formState).every(entry => (typeof entry[1] !== undefined))) {
+							postSignupSync(formState as FormStateNotUndefined).then((res) => {
+								if (res.status == 200) {
 									props.navigation.goBack();
 								} else {
 									toast.show({
-										duration: 2000,
+										duration: 1000,
 										title: "Signup failed",
-										description: "Please try again."
+										description: res.responseBody.msg
 									})
 								}
 							})
 						} else {
 							toast.show({
-								duration: 2000,
+								duration: 1000,
 								title: "Unfilled space",
 								description: "Please fill in all blanks."
 							})
