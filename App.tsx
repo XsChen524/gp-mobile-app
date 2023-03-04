@@ -6,12 +6,12 @@ import { store } from './src/redux/store'
 
 const App: React.FunctionComponent<{}> = () => {
 	return (
-    <Provider store={store}>
-      <NavigationContainer>
-        <AppTabNavigation />
-      </NavigationContainer>
-    </Provider>
-  );
+		<Provider store={store}>
+			<NavigationContainer>
+				<AppTabNavigation />
+			</NavigationContainer>
+		</Provider>
+	);
 }
 
 export default App;
