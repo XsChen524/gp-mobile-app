@@ -2,11 +2,11 @@ import * as React from 'react';
 import { View, Text } from 'react-native';
 
 function HomeScreen() {
-    return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Hello world</Text>
-        </View>
-    );
+	return (
+		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+			<Text>Hello world</Text>
+		</View>
+	);
 }
 
 export default HomeScreen;
