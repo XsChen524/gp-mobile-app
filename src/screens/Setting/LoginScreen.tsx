@@ -88,7 +88,7 @@ const LoginForm: React.FunctionComponent<IProps> = (props: IProps) => {
 								props.navigation.goBack();
 							} else {
 								toast.show({
-									duration: 1000,
+									duration: 5000,
 									title: "Login failed",
 									description: res.response.msg
 								})
@@ -96,7 +96,7 @@ const LoginForm: React.FunctionComponent<IProps> = (props: IProps) => {
 						})
 					} else {
 						toast.show({
-							duration: 1000,
+							duration: 2000,
 							title: "Unfilled space",
 							description: "Please fill in all blanks."
 						})
