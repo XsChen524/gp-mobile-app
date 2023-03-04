@@ -1,6 +1,6 @@
-import config from '../config/config';
-import { NativeSignupForm, EggSignupReturn, SignUpReturn } from '.';
-import { parseUrlEncodedBody } from '../utils/utils';
+import config from "../config/config";
+import { NativeSignupForm, EggSignupReturn, SignUpReturn } from ".";
+import { parseUrlEncodedBody } from "../utils/utils";
 
 /**
  * 1. post login form, wait for response, dispath and refresh
@@ -14,13 +14,13 @@ import { parseUrlEncodedBody } from '../utils/utils';
 
 /**
  * Async function for posting signup form to server and wait for response
- * @param {NativeSignupForm} form 
- * @returns {Promise<SignUpReturn>}
+ * @param {NativeSignupForm} form
+ * @returns {Promise<SignUpReturn>} Promise of signup return, including status code and response body
  */
-export const postSignupForm = async (form: NativeSignupForm): Promise<SignUpReturn> => {
-
-	let requestBody = parseUrlEncodedBody<NativeSignupForm>(form);
-
+export const postSignupSync = async (
+	form: NativeSignupForm
+): Promise<SignUpReturn> => {
+	let requestBody: string = parseUrlEncodedBody(form);
 	let response = await fetch(config.env.pro + config.url.auth.signup, {
 		method: "POST",
 		headers: {
@@ -29,14 +29,12 @@ export const postSignupForm = async (form: NativeSignupForm): Promise<SignUpRetu
 		},
 		body: requestBody,
 	});
-
 	let data: EggSignupReturn = await response.json();
-
-	let signupReturn = {
+	let signupReturn: SignUpReturn = {
 		status: response.status,
 		responseBody: data,
 	};
-
 	return signupReturn;
-
 };
+
+export const postLoginSync = () => {};
