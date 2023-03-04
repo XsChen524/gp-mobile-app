@@ -1,5 +1,12 @@
 import config from "../config/config";
-import { NativeSignupForm, EggSignupReturn, SignUpReturn } from ".";
+import {
+	NativeSignupForm,
+	EggSignupReturn,
+	SignUpReturn,
+	NativeLoginForm,
+	LoginReturn,
+	EggLoginReturn,
+} from ".";
 import { parseUrlEncodedBody } from "../utils/utils";
 
 /**
@@ -37,4 +44,26 @@ export const postSignupSync = async (
 	return signupReturn;
 };
 
-export const postLoginSync = () => {};
+/**
+ * Async function for posting login form to server and wait for response
+ * @param {NativeLoginForm} form
+ * @returns {Promise<LoginReturn>} status code and response body object
+ */
+export const postLoginSync = async (
+	form: NativeLoginForm
+): Promise<LoginReturn> => {
+	const response = await fetch(config.env.pro + config.url.auth.login, {
+		method: "POST",
+		headers: {
+			Accept: "application/json",
+			"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+		},
+		body: parseUrlEncodedBody(form),
+	});
+	const data: EggLoginReturn = await response.json();
+	const loginReturn: LoginReturn = {
+		status: response.status,
+		response: data,
+	};
+	return loginReturn;
+};
