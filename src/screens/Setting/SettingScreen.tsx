@@ -8,9 +8,10 @@ import {
 } from "native-base";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
-import { selectAuthState, signIn } from "../../redux/AuthSlice";
+import { selectAuthState, signOut, showAuth } from "../../redux/AuthSlice";
 import MenuItem from "../../components/MenuItem";
 import type { SettingStackParamList } from "../../router";
+import { deleteUserDataFromStorage, getUserDataFromStorage } from "../../utils/utils";
 
 type IProps = NativeStackScreenProps<SettingStackParamList, 'SettingStack'>;
 
@@ -65,11 +66,30 @@ const LoginButton: React.FunctionComponent<IProps> = (props: IProps) => {
 		<>
 			<Button
 				onPress={() => {
-					dispatch(signIn("123456" || null));
+					dispatch(signOut(null));
+					deleteUserDataFromStorage();
+				}}
+			>
+				Sign Out
+			</Button>
+			<Button
+				onPress={() => {
+					dispatch(showAuth(null));
+					console.log("\x1B[33mAuthState in Redux\x1B[0m");
 					console.log(authState);
 				}}
 			>
-				Dispatch
+				showAuth
+			</Button>
+			<Button
+				onPress={async () => {
+					getUserDataFromStorage().then((storedUserData) => {
+						console.log("\x1B[33mData in SecureStore:\x1B[0m");
+						console.log(storedUserData);
+					});
+				}}
+			>
+				getFromStorage
 			</Button>
 			<Button
 				onPress={() => {

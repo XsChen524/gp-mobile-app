@@ -88,7 +88,7 @@ const SignupForm: React.FunctionComponent<IProps> = (props: IProps) => {
 			<FormControl>
 				<FormControl.Label>Email</FormControl.Label>
 				<Input
-					type="text"
+					type="email"
 					value={formState.email}
 					onChangeText={(text) => {
 						handleChange("email", text);
@@ -126,7 +126,7 @@ const SignupForm: React.FunctionComponent<IProps> = (props: IProps) => {
 			{isRePassword ? (
 				<Button marginTop={5} height={10} mt="2" color="primary.500"
 					onPress={() => {
-						if (Object.entries(formState).every(entry => (typeof entry[1] !== undefined))) {
+						if (Object.entries(formState).every(entry => (typeof entry[1] !== 'undefined' && entry[1] != ""))) {
 							postSignupSync(formState as FormStateNotUndefined).then((res) => {
 								if (res.status == 200) {
 									props.navigation.goBack();
