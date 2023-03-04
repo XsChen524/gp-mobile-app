@@ -28,49 +28,17 @@ const LoginForm: React.FunctionComponent<IProps> = (props: IProps) => {
 			<FormControl>
 				<FormControl.Label>Password</FormControl.Label>
 				<Input type="password" />
-				<Link
-					_text={{
-						fontSize: "xs",
-						fontWeight: "500",
-						color: "indigo.500",
-					}}
-					alignSelf="flex-end"
-					mt="1"
-				>
-					Forget Password?
-				</Link>
 			</FormControl>
-			<Button mt="2" height={10} color="primary.500">
+			<Button marginTop={8} mt="2" height={12} color="primary.500">
 				Login
 			</Button>
-		</>
-	);
-}
-
-const NavigationToSignUp: React.FunctionComponent<IProps> = (props: IProps) => {
-	return (
-		<>
-			<Text
-				fontSize="sm"
-				color="coolGray.600"
-				_dark={{
-					color: "warmGray.200",
-				}}
-			>
-				I'm a new user.{" "}
-			</Text>
-			<Link
-				_text={{
-					color: "indigo.500",
-					fontWeight: "medium",
-					fontSize: "sm",
-				}}
+			<Button marginTop={6} mt="2" height={12} color="primary.300"
 				onPress={() => {
 					props.navigation.navigate("SignupStack");
 				}}
 			>
 				Sign Up
-			</Link>
+			</Button>
 		</>
 	);
 }
@@ -83,9 +51,6 @@ const LoginScreen: React.FunctionComponent<IProps> = (props: IProps) => {
 					<Header {...props} />
 					<VStack space={3} mt="5">
 						<LoginForm {...props} />
-						<HStack mt="6" justifyContent="center">
-							<NavigationToSignUp {...props} />
-						</HStack>
 					</VStack>
 				</Box>
 			</Center>
