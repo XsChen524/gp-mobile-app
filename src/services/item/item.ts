@@ -41,7 +41,7 @@ export const getAllItemSync = async (
 	jwt: string
 ): Promise<Item.Item[] | undefined> => {
 	const response = await fetch(
-		config.env.pro + config.url.item + "/all/" + userId,
+		config.env.pro + config.url.item.getAll + `/${userId}`,
 		{
 			method: "GET",
 			headers: {
