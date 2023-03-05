@@ -13,7 +13,7 @@ import {
 } from "native-base";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import type { SettingStackParamList } from "../../router";
-import { postSignupSync } from "../../services/auth";
+import { postSignupSync } from "../../services/auth/auth";
 
 type IProps = NativeStackScreenProps<SettingStackParamList, "SignupStack">;
 type FormState = {

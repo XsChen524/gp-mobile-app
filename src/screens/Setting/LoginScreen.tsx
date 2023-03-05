@@ -3,7 +3,7 @@ import { Box, Button, Center, FormControl, Heading, Input, NativeBaseProvider, V
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { SettingStackParamList } from "../../router";
 import { useReducer } from 'react';
-import { postLoginSync } from '../../services/auth';
+import { postLoginSync } from '../../services/auth/auth';
 import { signIn } from '../../redux/AuthSlice';
 import { useAppDispatch } from '../../redux/hooks';
 import { saveUserDataToStorage } from '../../utils/utils';
