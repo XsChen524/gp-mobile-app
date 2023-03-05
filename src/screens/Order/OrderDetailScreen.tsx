@@ -6,7 +6,8 @@ import { OrderStackParamList } from "../../router";
 type OrderDetailProps = NativeStackScreenProps<OrderStackParamList, 'OrderDetailStack'>;
 
 const OrderDetailScreen: React.FunctionComponent<OrderDetailProps> = (props: OrderDetailProps) => {
-	console.log(props);
+	const item = props.route.params.item;
+	console.log(item);
 	return (
 		<NativeBaseProvider>
 			<Box>
