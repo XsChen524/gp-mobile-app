@@ -117,3 +117,12 @@ export const parseUrlEncodedBody = (obj: Object): string => {
 	let requestBodyParse = requestParams.join("&");
 	return requestBodyParse;
 };
+
+export const authFormattedLog = (authState: UserData): void => {
+	console.log("\x1B[33mAuthState in Redux\x1B[0m");
+	Object.entries(authState).forEach((entry) => {
+		console.log(
+			`\x1B[36m${typeof entry[1]} \x1B[0m${entry[0]}: ${entry[1]}`
+		);
+	});
+};
