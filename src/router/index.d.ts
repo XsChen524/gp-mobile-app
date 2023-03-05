@@ -1,10 +1,16 @@
 export type AppTabParamList = {
-    Home: undefined,
-    Settings: undefined,
+	Home: undefined;
+	Order: undefined;
+	Settings: undefined;
 };
 
 export type SettingStackParamList = {
-    SettingStack: undefined;
-    LoginStack: undefined;
-    SignupStack: undefined;
+	SettingStack: undefined;
+	LoginStack: undefined;
+	SignupStack: undefined;
+};
+
+export type OrderStackParamList = {
+	OrderStack: undefined;
+	OrderCreateStack: undefined;
 };

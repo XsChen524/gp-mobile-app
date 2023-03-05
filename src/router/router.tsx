@@ -1,12 +1,34 @@
 import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Ionicons } from "@expo/vector-icons";
-import { HomeScreen, SettingScreen, LoginScreen, SignupScreen } from '../screens';
-import type { AppTabParamList, SettingStackParamList } from ".";
+import { Ionicons, Octicons } from "@expo/vector-icons";
+import { HomeScreen, SettingScreen, LoginScreen, SignupScreen, OrderScreen, OrderCreateScreen } from '../screens';
+import { AppTabParamList, OrderStackParamList, SettingStackParamList } from ".";
 
 const Tab = createBottomTabNavigator<AppTabParamList>();
 const SettingStack = createNativeStackNavigator<SettingStackParamList>(); // Create Native Stack Navigator
+const OrderStack = createNativeStackNavigator<OrderStackParamList>();
+
+const AppOrderStack: React.FC = () => {
+	return (
+		<OrderStack.Navigator initialRouteName='OrderStack'>
+			<OrderStack.Screen
+				name="OrderStack"
+				component={OrderScreen}
+				options={{
+					title: "Orders"
+				}}
+			/>
+			<OrderStack.Screen
+				name="OrderCreateStack"
+				component={OrderCreateScreen}
+				options={{
+					title: "Create an order"
+				}}
+			/>
+		</OrderStack.Navigator>
+	);
+}
 
 const AppSettingStack: React.FunctionComponent<{}> = () => {
 	return (
@@ -46,6 +68,19 @@ const AppTabNavigation: React.FunctionComponent<{}> = () => {
 					tabBarIcon: ({ color, size }) => (
 						<Ionicons
 							name="home"
+							color={color}
+							size={size}
+						/>
+					),
+				}}
+			/>
+			<Tab.Screen
+				name="Order"
+				component={AppOrderStack}
+				options={{
+					tabBarIcon: ({ color, size }) => (
+						<Octicons
+							name="list-ordered"
 							color={color}
 							size={size}
 						/>
