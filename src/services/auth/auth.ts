@@ -1,4 +1,4 @@
-import config from "../config/config";
+import config from "../../config/config";
 import {
 	NativeSignupForm,
 	EggSignupReturn,
@@ -7,7 +7,7 @@ import {
 	LoginReturn,
 	EggLoginReturn,
 } from ".";
-import { parseUrlEncodedBody } from "../utils/utils";
+import { parseUrlEncodedBody } from "../../utils/utils";
 
 /**
  * 1. post login form, wait for response, dispath and refresh
