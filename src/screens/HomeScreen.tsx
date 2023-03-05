@@ -17,7 +17,7 @@ const HomeScreen: React.FC = () => {
 	const dispatch = useAppDispatch();
 	const [loading, setloading] = useState(authState.isLoading);
 
-	const bootstrapAsync = async () => {
+	const bootstrapSync = async () => {
 		getUserDataFromStorage().then((userData) => {
 			dispatch(restoreUserData(userData));
 			/**
@@ -30,7 +30,7 @@ const HomeScreen: React.FC = () => {
 	};
 
 	useEffect(() => {
-		if (loading == true) bootstrapAsync();
+		if (loading == true) bootstrapSync();
 	}, []);
 	/**
 	 * End of bootstrap
