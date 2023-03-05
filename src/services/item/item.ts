@@ -40,16 +40,18 @@ export const getAllItemSync = async (
 	userId: number,
 	jwt: string
 ): Promise<Item.Item[] | undefined> => {
-	const requestBody: string = parseUrlEncodedBody({ id: userId });
-	const response = await fetch(config.env.pro + config.url.item, {
-		method: "GET",
-		headers: {
-			Accept: "application/json",
-			Authorization: `Bearer ${jwt}`,
-			"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-		},
-		body: requestBody,
-	});
+	const response = await fetch(
+		config.env.pro + config.url.item + "/all/" + userId,
+		{
+			method: "GET",
+			headers: {
+				Accept: "application/json",
+				Authorization: `Bearer ${jwt}`,
+				"Content-Type":
+					"application/x-www-form-urlencoded; charset=UTF-8",
+			},
+		}
+	);
 	const itemGetAllResponse: Item.ItemGetAllResponse = await response.json();
 	if (itemGetAllResponse.status === false) {
 		return undefined;
