@@ -13,4 +13,7 @@ export type SettingStackParamList = {
 export type OrderStackParamList = {
 	OrderStack: undefined;
 	OrderCreateStack: undefined;
+	OrderDetailStack: {
+		item: import("../services/item/index").Item.Item;
+	};
 };

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Ionicons, Octicons } from "@expo/vector-icons";
-import { HomeScreen, SettingScreen, LoginScreen, SignupScreen, OrderScreen, OrderCreateScreen } from '../screens';
+import { HomeScreen, SettingScreen, LoginScreen, SignupScreen, OrderScreen, OrderCreateScreen, OrderDetailScreen } from '../screens';
 import { AppTabParamList, OrderStackParamList, SettingStackParamList } from ".";
 
 const Tab = createBottomTabNavigator<AppTabParamList>();
@@ -24,6 +24,13 @@ const AppOrderStack: React.FC = () => {
 				component={OrderCreateScreen}
 				options={{
 					title: "Create an order"
+				}}
+			/>
+			<OrderStack.Screen
+				name="OrderDetailStack"
+				component={OrderDetailScreen}
+				options={{
+					title: "Item Details"
 				}}
 			/>
 		</OrderStack.Navigator>
