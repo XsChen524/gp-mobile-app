@@ -11,7 +11,7 @@ import { useAppSelector, useAppDispatch } from "../../redux/hooks";
 import { selectAuthState, signOut, showAuth } from "../../redux/AuthSlice";
 import MenuItem from "../../components/MenuItem";
 import type { SettingStackParamList } from "../../router";
-import { deleteUserDataFromStorage, getUserDataFromStorage } from "../../utils/utils";
+import { authFormattedLog, deleteUserDataFromStorage, getUserDataFromStorage } from "../../utils/utils";
 
 type IProps = NativeStackScreenProps<SettingStackParamList, 'SettingStack'>;
 
@@ -75,8 +75,7 @@ const LoginButton: React.FunctionComponent<IProps> = (props: IProps) => {
 			<Button
 				onPress={() => {
 					dispatch(showAuth(null));
-					console.log("\x1B[33mAuthState in Redux\x1B[0m");
-					console.log(authState);
+					authFormattedLog(authState);
 				}}
 			>
 				showAuth
