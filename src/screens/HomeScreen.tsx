@@ -14,14 +14,17 @@ const HomeScreen: React.FC = () => {
 	 * when bootstrap the app and get to the index
 	 */
 	const authState = useAppSelector(selectAuthState);
-	const authDispatch = useAppDispatch();
+	const dispatch = useAppDispatch();
 	const [loading, setloading] = useState(authState.isLoading);
 
 	const bootstrapAsync = async () => {
 		getUserDataFromStorage().then((userData) => {
+			dispatch(restoreUserData(userData));
+			/**
+			 * If userEmail undefined, claim user is not logged in
+			 */
 			if (typeof userData.userEmail === "undefined")
-				authDispatch(signedOutAtBootstrap(null));
-			authDispatch(restoreUserData(userData));
+				dispatch(signedOutAtBootstrap(null));
 			setloading(false);
 		});
 	};
