@@ -11,7 +11,7 @@ const OrderDetailScreen: React.FunctionComponent<OrderDetailProps> = (props: Ord
 	return (
 		<NativeBaseProvider>
 			<Box>
-				<Text>Details</Text>
+				<Text>{item.item_name}</Text>
 			</Box>
 		</NativeBaseProvider>
 	)
