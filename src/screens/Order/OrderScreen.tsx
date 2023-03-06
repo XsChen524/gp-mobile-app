@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Image, View, Text, NativeBaseProvider, ScrollView, Box, HStack, VStack, Button, Center, Spacer, FlatList, Icon } from 'native-base';
+import { Image, View, Text, NativeBaseProvider, Box, HStack, VStack, Button, Center, Spacer, FlatList, Icon } from 'native-base';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useAppSelector } from '../../redux/hooks';
 import { selectAuthState } from '../../redux/AuthSlice';
