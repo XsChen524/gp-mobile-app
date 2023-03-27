@@ -15,8 +15,9 @@
 	},
 	"plugins": ["react", "react-native"],
 	"rules": {
-		"indent": ["warn", "tab"],
-		"semi": [2, "always"]
+		"no-unused-vars": "warn",
+		"indent": ["error", "tab"],
+		"semi": ["error", "always"]
 	},
 	"settings": {
 		"react": {
