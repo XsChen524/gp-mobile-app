@@ -13,7 +13,7 @@ export const postNewItemSync = async (
 	jwt: string
 ): Promise<Item.Item | undefined> => {
 	const requestBody: string = parseUrlEncodedBody(form);
-	const response = await fetch(config.env.pro + config.url.item, {
+	const response = await fetch(config.env.pro + config.url.item.index, {
 		method: "POST",
 		headers: {
 			Accept: "application/json",
