@@ -86,7 +86,6 @@ const OrderCreateScreen: React.FunctionComponent<OrderCreateProps> = (props: Ord
 								checkEmptyInput(formState).then((hasNoEmpty) => {
 									if (hasNoEmpty) {
 										if (!isNaN(Number(formState.askPrice)) && !isNaN(Number(formState.userId))) {
-											console.log(Number(formState.askPrice));
 											const postFrom: Item.ItemPostBody = {
 												userId: Number(formState.userId),
 												itemName: formState.itemName as string,
