@@ -9,6 +9,7 @@ import { getAllItemSync } from '../../services/item/item';
 import Avatar from '../../components/Avatar';
 import moment from 'moment';
 import { Ionicons } from "@expo/vector-icons";
+import { useIsFocused } from '@react-navigation/native';
 
 type OrderScreenProps = NativeStackScreenProps<OrderStackParamList, 'OrderStack'>;
 
@@ -143,12 +144,15 @@ const OrderList: React.FunctionComponent<{ items: Item.Item[] } & OrderScreenPro
 
 const OrderScreen: React.FunctionComponent<OrderScreenProps> = (props: OrderScreenProps) => {
 	const authState = useAppSelector(selectAuthState);
-	const [items, setItems] = useState<Item.Item[] | undefined>(undefined)
+	const [items, setItems] = useState<Item.Item[] | undefined>(undefined);
+	const isFocused = useIsFocused();
 
 	const loadOrders = async (): Promise<void> => {
 		if (authState.userId && authState.userToken) {
 			const data = await getAllItemSync(authState.userId, authState.userToken);
-			if (data) setItems(data);
+			if (data) {
+				setItems(data)
+			};
 		};
 	};
 
@@ -158,7 +162,7 @@ const OrderScreen: React.FunctionComponent<OrderScreenProps> = (props: OrderScre
 		} else {
 			loadOrders();
 		}
-	}, [authState.isSignout]);
+	}, [authState.isSignout, isFocused]);
 
 	return (
 		<NativeBaseProvider>
