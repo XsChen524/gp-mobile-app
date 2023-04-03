@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Fab, Icon, NativeBaseProvider, ScrollView, VStack } from "native-base";
+import { Box, Fab, NativeBaseProvider, ScrollView, VStack } from "native-base";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { OrderStackParamList } from "../../router";
 import { Item } from "../../services/item";
@@ -9,7 +9,6 @@ import { getUserByIdSync } from "../../services/user/user";
 import { useAppSelector } from "../../redux/hooks";
 import { selectAuthState } from "../../redux/AuthSlice";
 import OrderDetailEntry from "../../components/OrderDetailEntry";
-import { AntDesign } from '@expo/vector-icons';
 import moment from "moment";
 
 type OrderDetailProps = NativeStackScreenProps<OrderStackParamList, 'OrderDetailStack'>;
