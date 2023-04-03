@@ -20,17 +20,14 @@ const HomeCard: React.FunctionComponent<{ userName: string | undefined }> = (pro
 					}} source={require("../assets/images/react.png")} ></Image>
 				</Box>
 				<Box px="4" py="4">
-					<Text fontSize={"md"}> {props.userName ? `Welcome, ${props.userName}!` : "Welcome!"} </Text>
+					<Text fontSize={"md"}> {props.userName ? `Welcome, ${props.userName}!` : 'Welcome! \n Go to "Settings" to login first.'} </Text>
 					<Divider my={"2"}></Divider>
 					<Text fontSize={"sm"}>This is COMP7506 Group 04 Project</Text>
 					<Text mt={"2"} fontSize={"sm"}>TypeScript + React Native + ♥</Text>
 					<Button my={"3"} onPress={() => {
-						var url = 'https://github.com/XsChen524/gp-mobile-app'
-
+						const url = 'https://github.com/XsChen524/gp-mobile-app'
 						Linking.canOpenURL(url).then(supported => {
-							if (!supported) {
-								console.warn('Can\'t handle url: ' + url);
-							} else {
+							if (supported) {
 								return Linking.openURL(url);
 							}
 						}).catch(err => console.error('An error occurred', err));
