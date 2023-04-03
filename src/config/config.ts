@@ -10,6 +10,9 @@ const config = {
 			signup: "/auth/signup",
 			login: "/auth/login",
 		},
+		user: {
+			index: "/user",
+		},
 		item: {
 			index: "/items",
 			getAll: "/items/all",
