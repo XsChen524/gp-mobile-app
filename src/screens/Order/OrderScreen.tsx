@@ -5,7 +5,7 @@ import { useAppSelector } from '../../redux/hooks';
 import { selectAuthState } from '../../redux/AuthSlice';
 import { OrderStackParamList } from '../../router';
 import { Item } from '../../services/item';
-import { getAllItemSync } from '../../services/item/item';
+import { getAllItemByUserIdSync } from '../../services/item/item';
 import Avatar from '../../components/Avatar';
 import moment from 'moment';
 import { Ionicons } from "@expo/vector-icons";
@@ -145,11 +145,15 @@ const OrderList: React.FunctionComponent<{ items: Item.Item[] } & OrderScreenPro
 const OrderScreen: React.FunctionComponent<OrderScreenProps> = (props: OrderScreenProps) => {
 	const authState = useAppSelector(selectAuthState);
 	const [items, setItems] = useState<Item.Item[] | undefined>(undefined);
+
+	/**
+	 * Method to refresh the screen on focusing
+	 */
 	const isFocused = useIsFocused();
 
 	const loadOrders = async (): Promise<void> => {
 		if (authState.userId && authState.userToken) {
-			const data = await getAllItemSync(authState.userId, authState.userToken);
+			const data = await getAllItemByUserIdSync(authState.userId, authState.userToken);
 			if (data) {
 				setItems(data)
 			};
@@ -162,7 +166,7 @@ const OrderScreen: React.FunctionComponent<OrderScreenProps> = (props: OrderScre
 		} else {
 			loadOrders();
 		}
-	}, [authState.isSignout, isFocused]);
+	}, [authState.isSignout, isFocused]); // Register isFocused in useEffect to force refresh
 
 	return (
 		<NativeBaseProvider>

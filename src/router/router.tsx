@@ -101,11 +101,10 @@ const AppTabNavigation: React.FunctionComponent<{}> = () => {
 				component={AppTransactionStack}
 				options={{
 					tabBarIcon: ({ color, size }) => (
-						<Octicons
-							name="list-ordered"
+						<Ionicons
+							name="cart"
 							color={color}
-							size={size}
-						/>
+							size={size} />
 					),
 				}}
 			/>

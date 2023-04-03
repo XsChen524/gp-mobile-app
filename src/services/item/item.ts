@@ -36,7 +36,7 @@ export const postNewItemSync = async (
  * @param {string} jwt
  * @returns Promise<Item.Item[] | undefined>
  */
-export const getAllItemSync = async (
+export const getAllItemByUserIdSync = async (
 	userId: number,
 	jwt: string
 ): Promise<Item.Item[] | undefined> => {
@@ -52,6 +52,22 @@ export const getAllItemSync = async (
 			},
 		}
 	);
+	const itemGetAllResponse: Item.ItemGetAllResponse = await response.json();
+	if (itemGetAllResponse.status === false) {
+		return undefined;
+	}
+	const items: Item.Item[] = itemGetAllResponse.data;
+	return items;
+};
+
+export const getAllItemsSync = async (): Promise<Item.Item[] | undefined> => {
+	const response = await fetch(config.env.pro + config.url.item.getAll, {
+		method: "GET",
+		headers: {
+			Accept: "application/json",
+			"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+		},
+	});
 	const itemGetAllResponse: Item.ItemGetAllResponse = await response.json();
 	if (itemGetAllResponse.status === false) {
 		return undefined;
