@@ -8,6 +8,7 @@ import {
 } from "../redux/AuthSlice";
 import { getUserDataFromStorage } from "../utils/utils";
 import { Box, VStack, Divider, NativeBaseProvider, Image, Text, Button, Link } from "native-base";
+import { LuckyDrawCard } from "../components/LuckyDraw/LuckyDraw";
 
 const HomeCard: React.FunctionComponent<{ userName: string | undefined }> = (props: { userName: string | undefined }) => {
 	return (
@@ -72,6 +73,7 @@ const HomeScreen: React.FC = () => {
 				style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
 			>
 				<HomeCard userName={authState.userName} />
+				<LuckyDrawCard userName={authState.userName} />
 			</View>
 		</NativeBaseProvider>
 	);
