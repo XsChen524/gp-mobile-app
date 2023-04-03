@@ -96,7 +96,6 @@ const OrderDetailScreen: React.FunctionComponent<OrderDetailProps> = (props: Ord
 		itemDescription: rawItem.item_description,
 	}
 
-	console.log(item);
 	return (
 		<NativeBaseProvider>
 			<Box borderWidth={"1"} borderColor={"green.400"}>
