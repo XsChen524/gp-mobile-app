@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View } from "react-native";
+import { View, Linking } from "react-native";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import {
 	restoreUserData,
@@ -7,11 +7,11 @@ import {
 	signedOutAtBootstrap,
 } from "../redux/AuthSlice";
 import { getUserDataFromStorage } from "../utils/utils";
-import { Box, VStack, Divider, NativeBaseProvider, Image, Text } from "native-base";
+import { Box, VStack, Divider, NativeBaseProvider, Image, Text, Button, Link } from "native-base";
 
 const HomeCard: React.FunctionComponent<{ userName: string | undefined }> = (props: { userName: string | undefined }) => {
 	return (
-		<Box borderWidth={"1"} borderRadius="md">
+		<Box borderWidth={"1"} borderRadius={"20"} overflow={"hidden"}>
 			<VStack divider={<Divider />}>
 				<Box background={"#272727"}>
 					<Image alt={"React Native"} style={{
@@ -24,6 +24,17 @@ const HomeCard: React.FunctionComponent<{ userName: string | undefined }> = (pro
 					<Divider my={"2"}></Divider>
 					<Text fontSize={"sm"}>This is COMP7506 Group 04 Project</Text>
 					<Text mt={"2"} fontSize={"sm"}>TypeScript + React Native + ♥</Text>
+					<Button my={"3"} onPress={() => {
+						var url = 'https://github.com/XsChen524/gp-mobile-app'
+
+						Linking.canOpenURL(url).then(supported => {
+							if (!supported) {
+								console.warn('Can\'t handle url: ' + url);
+							} else {
+								return Linking.openURL(url);
+							}
+						}).catch(err => console.error('An error occurred', err));
+					}}>GitHub</Button>
 				</Box>
 			</VStack>
 		</Box>
