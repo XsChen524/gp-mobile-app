@@ -17,6 +17,9 @@ const config = {
 			index: "/items",
 			getAll: "/items/all",
 		},
+		transaction: {
+			index: "/transaction",
+		},
 	},
 };
 
