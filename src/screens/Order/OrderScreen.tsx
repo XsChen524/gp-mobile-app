@@ -125,6 +125,9 @@ const OrderList: React.FunctionComponent<{ items: Item.Item[] } & OrderScreenPro
 							<Text fontSize="xs" color="coolGray.600">
 								Update: {moment.utc(item.updatedAt).utcOffset(480).format("LL")}
 							</Text>
+							<Text fontSize="xs" color={item.state === "up_for_sale" ? "green.600" : "danger.600"}>
+								{item.state === "up_for_sale" ? "For sale" : "Closed"}
+							</Text>
 						</VStack>
 						<Icon
 							as={Ionicons}
