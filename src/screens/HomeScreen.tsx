@@ -80,7 +80,6 @@ const HomeScreen: React.FC = () => {
 						userName={authState.userName as string}
 					/>
 				}
-
 			</View>
 		</NativeBaseProvider>
 	);
