@@ -21,4 +21,10 @@ export type OrderStackParamList = {
 
 export type TransactionStackParamList = {
 	TransactionStack: undefined;
+	TransactionDetailStack: {
+		item: import("../services/item/index").Item.Item;
+	};
+	PostTranStack: {
+		item: import("../services/item/index").Item.Item;
+	};
 };
