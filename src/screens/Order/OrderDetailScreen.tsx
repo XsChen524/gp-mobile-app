@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Box, Fab, NativeBaseProvider, ScrollView, VStack } from "native-base";
+import { Box, Fab, NativeBaseProvider, ScrollView, VStack, Image } from "native-base";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { OrderStackParamList } from "../../router";
 import { Item } from "../../services/item";
-import SvgUri from "react-native-svg-uri";
 import { User } from "../../services/user";
 import { getUserByIdSync } from "../../services/user/user";
 import { useAppSelector } from "../../redux/hooks";
@@ -49,7 +48,8 @@ const OrderDetail: React.FunctionComponent<ParsedItem> = (props: ParsedItem) => 
 					style={{
 						height: 350
 					}}>
-					<SvgUri
+					<Image
+						alt={"image"}
 						height="300"
 						width="300"
 						source={{
@@ -97,8 +97,8 @@ const OrderDetailScreen: React.FunctionComponent<OrderDetailProps> = (props: Ord
 
 	return (
 		<NativeBaseProvider>
-			<Box borderWidth={"1"} borderColor={"green.400"}>
-				<ScrollView height={"full"} borderWidth={"1"} borderColor={"primary.500"}>
+			<Box>
+				<ScrollView height={"full"}>
 					<OrderDetail {...item} />
 				</ScrollView>
 				<Fab renderInPortal={false} shadow={2} label="Update" />
