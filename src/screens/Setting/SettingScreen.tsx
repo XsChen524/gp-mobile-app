@@ -58,7 +58,14 @@ const Profile: React.FunctionComponent<{}> = () => {
 							</View>
 							<VStack space={2}>
 								<Text style={{ color: "white" }} fontSize={"lg"}>{authState.userName}</Text>
-								<Text style={{ color: "white" }} fontSize={"sm"}>Balance: {user.balance.toFixed(2)}    Rank: {user.rank}</Text>
+								{authState.isSignout ? undefined :
+									<Text
+										style={{ color: "white" }}
+										fontSize={"sm"}
+									>
+										Balance: {user.balance.toFixed(2)}    Rank: {user.rank}
+									</Text>
+								}
 							</VStack>
 						</>
 				}
