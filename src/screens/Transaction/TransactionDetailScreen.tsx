@@ -10,6 +10,7 @@ import { User } from "../../services/user";
 import moment from "moment";
 import { ToastAndroid } from "react-native";
 import { createTransactionSync } from "../../services/transaction/transaction";
+import { Tx } from "../../services/transaction";
 
 type TransactionDetailProps = NativeStackScreenProps<TransactionStackParamList, "TransactionDetailStack">
 
@@ -134,8 +135,11 @@ const TransactionDetailScreen: React.FunctionComponent<TransactionDetailProps> =
 					onPress={async () => {
 						await checkSum(item.price) ?
 							createTransactionSync(authState.userId as number, item, authState.userToken as string).then((tx) => {
-								console.log(tx);
-								props.navigation.navigate("PostTranStack", { tx });
+								if (tx) {
+									console.log(tx);
+									props.navigation.navigate("PostTranStack", { tx });
+								}
+
 							})
 							: showToast("Balance is not sufficient!")
 					}}

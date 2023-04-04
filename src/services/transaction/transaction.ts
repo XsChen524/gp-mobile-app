@@ -29,12 +29,22 @@ export const createTransactionSync = async (
 		}
 	);
 
-	const txCreateReturn: { status: boolean; data: Tx.TxCreateReturnParams } =
+	const txCreateReturn: { status: boolean; data: any } =
 		await response.json();
 	if (txCreateReturn.status === false) {
 		return undefined;
 	}
-	return txCreateReturn.data;
+	const tx: Tx.TxCreateReturnParams = {
+		txId: txCreateReturn.data.id,
+		sellerId: parseInt(txCreateReturn.data.seller_id),
+		buyerId: parseInt(txCreateReturn.data.buyer_id),
+		itemId: parseInt(txCreateReturn.data.item_id),
+		state: txCreateReturn.data.state,
+		price: parseFloat(txCreateReturn.data.price),
+		createdAt: txCreateReturn.data.createdAt,
+		updatedAt: txCreateReturn.data.updatedAt,
+	};
+	return tx;
 };
 
 export const updateTransactionSync = async (
