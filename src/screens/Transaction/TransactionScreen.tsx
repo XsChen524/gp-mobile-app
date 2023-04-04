@@ -3,8 +3,6 @@ import { NativeBaseProvider, Text, Image, Box, FlatList, HStack, Spacer, VStack,
 import { Item } from "../../services/item";
 import { useIsFocused } from "@react-navigation/native";
 import { getAllItemsSync } from "../../services/item/item";
-import { useAppSelector } from "../../redux/hooks";
-import { selectAuthState } from "../../redux/AuthSlice";
 import moment from "moment";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { TransactionStackParamList } from "../../router";
@@ -56,10 +54,16 @@ const ItemList: React.FunctionComponent<
 							<Text fontSize="xs" color="coolGray.600">
 								Update: {moment.utc(item.updatedAt).utcOffset(480).format("LL")}
 							</Text>
+							<Text fontSize="xs" color={item.state === "up_for_sale" ? "green.600" : "danger.600"}>
+								{item.state === "up_for_sale" ? "For sale" : "Closed"}
+							</Text>
 						</VStack>
 						<Button
 							size={"sm"}
 							fontSize={"sm"}
+							variant={item.state === "up_for_sale" ? "solid" : "outline"}
+							colorScheme={item.state === "up_for_sale" ? "primary" : "green"}
+							disabled={item.state === "up_for_sale" ? false : true}
 							onPress={() => {
 								props.navigation.navigate('TransactionDetailStack', { item });
 							}}
@@ -72,19 +76,14 @@ const ItemList: React.FunctionComponent<
 }
 
 const TransactionScreen: React.FunctionComponent<TransactionScreenProps> = (props: TransactionScreenProps) => {
-	const authState = useAppSelector(selectAuthState);
 	const [items, setItems] = useState<Item.Item[] | undefined>(undefined);
 	const isFocused = useIsFocused();
 
 	useEffect(() => {
-		if (!authState.isSignout) {
-			getAllItemsSync().then((data) => {
-				setItems(data);
-			})
-		} else {
-			setItems(undefined);
-		}
-	}, [isFocused, authState.isSignout]);
+		getAllItemsSync().then((data) => {
+			setItems(data);
+		})
+	}, [isFocused]);
 
 	return (
 		<NativeBaseProvider>

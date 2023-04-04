@@ -5,7 +5,7 @@ import { TransactionStackParamList } from "../../router";
 type PostTranProps = NativeStackScreenProps<TransactionStackParamList, "PostTranStack">
 
 const PostTranScreen: React.FunctionComponent<PostTranProps> = (props: PostTranProps) => {
-	console.log(props.route.params.item);
+	console.log(props.route.params.tx);
 	return (
 		<NativeBaseProvider>
 			<Text>Post Transaction</Text>
