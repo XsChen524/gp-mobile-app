@@ -19,6 +19,18 @@ export namespace Item {
 		createdAt: string;
 	}
 
+	export interface ParsedItem {
+		id: number;
+		sellerId: number;
+		picUrl: string;
+		itemName: string;
+		itemDescription: string;
+		state: string;
+		price: number;
+		updatedAt: string;
+		createdAt: string;
+	}
+
 	export interface ItemCreateResponse {
 		status: boolean;
 		data: Item;
