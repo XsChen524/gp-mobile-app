@@ -73,7 +73,14 @@ const HomeScreen: React.FC = () => {
 				style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
 			>
 				<HomeCard userName={authState.userName} />
-				<LuckyDrawCard userName={authState.userName} />
+				{authState.isSignout ? undefined :
+					<LuckyDrawCard
+						token={authState.userToken as string}
+						userId={authState.userId as number}
+						userName={authState.userName as string}
+					/>
+				}
+
 			</View>
 		</NativeBaseProvider>
 	);
