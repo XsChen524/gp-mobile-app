@@ -25,6 +25,6 @@ export type TransactionStackParamList = {
 		item: import("../services/item/index").Item.Item;
 	};
 	PostTranStack: {
-		item: import("../services/item/index").Item.Item;
+		tx: import("../services/transaction/index").Item.TxCreateReturnParams;
 	};
 };
