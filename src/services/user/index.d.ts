@@ -5,3 +5,9 @@ export interface User {
 	balance: number;
 	rank: number;
 }
+
+export interface UserUpdateResult {
+	id: number;
+	balance: number;
+	rank: number;
+}
