@@ -71,3 +71,51 @@ export const updateTransactionSync = async (
 	if (txUpdateReturn.status === false) return undefined;
 	return txUpdateReturn.data;
 };
+
+export const getAllTxsByUserIdSync = async (
+	userId: number,
+	jwt: string
+): Promise<Tx.TxUpdateReturnParams[] | undefined> => {
+	const response = await fetch(
+		config.env.pro + config.url.transaction.getAll + userId.toString(),
+		{
+			method: "GET",
+			headers: {
+				Accept: "application/json",
+				Authorization: `Bearer ${jwt}`,
+				"Content-Type":
+					"application/x-www-form-urlencoded; charset=UTF-8",
+			},
+		}
+	);
+
+	const getTxsResponse: { status: boolean; data?: any[] } =
+		await response.json();
+	if (!getTxsResponse.status) return undefined;
+	const parsedTxsArray: Tx.TxUpdateReturnParams[] = [];
+	const parseTxs = async (
+		parsedTxsArray: Tx.TxUpdateReturnParams[]
+	): Promise<void> => {
+		return new Promise<void>((resolve) => {
+			for (const tx of getTxsResponse.data as any[]) {
+				const parsedTx: Tx.TxUpdateReturnParams = {
+					txId: tx.id,
+					sellerId: tx.seller_id,
+					buyerId: tx.buyer_id,
+					itemId: tx.item_id,
+					price: tx.price,
+					state: tx.state,
+					sellerRate: tx.seller_rating,
+					buyerRate: tx.buyer_rating,
+					comment: tx.comment,
+					createdAt: tx.createdAt,
+					updatedAt: tx.updatedAt,
+				};
+				parsedTxsArray.push(parsedTx);
+			}
+			resolve();
+		});
+	};
+	await parseTxs(parsedTxsArray);
+	return parsedTxsArray;
+};
