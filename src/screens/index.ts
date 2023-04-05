@@ -8,6 +8,8 @@ import OrderScreen from "./Order/OrderScreen";
 import TransactionScreen from "./Transaction/TransactionScreen";
 import TransactionDetailScreen from "./Transaction/TransactionDetailScreen";
 import PostTranScreen from "./Transaction/PostTranScreen";
+import MyTxsScreen from "./Transaction/MyTxsScreen";
+import MyTxDetailScreen from "./Transaction/MyTxDetailScreen";
 
 export {
 	HomeScreen,
@@ -19,5 +21,7 @@ export {
 	OrderScreen,
 	TransactionScreen,
 	TransactionDetailScreen,
+	MyTxsScreen,
+	MyTxDetailScreen,
 	PostTranScreen,
 };
