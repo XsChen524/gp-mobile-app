@@ -109,7 +109,7 @@ const OrderList: React.FunctionComponent<{ items: Item.Item[] } & OrderScreenPro
 							alt='item'
 						/>
 						<VStack>
-							<Text color="coolGray.800" bold>
+							<Text color="coolGray.800" bold maxWidth={"130"}>
 								{item.item_name}
 							</Text>
 						</VStack>
