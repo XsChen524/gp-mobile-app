@@ -75,3 +75,28 @@ export const getAllItemsSync = async (): Promise<Item.Item[] | undefined> => {
 	const items: Item.Item[] = itemGetAllResponse.data;
 	return items;
 };
+
+export const getItemByIdSync = async (
+	itemId: number,
+	jwt: string
+): Promise<Item.Item | undefined> => {
+	const response = await fetch(
+		config.env.pro + config.url.item.index + `/${itemId}`,
+		{
+			method: "GET",
+			headers: {
+				Accept: "application/json",
+				Authorization: `Bearer ${jwt}`,
+				"Content-Type":
+					"application/x-www-form-urlencoded; charset=UTF-8",
+			},
+		}
+	);
+	const itemGetResponse: { status: boolean; data?: Item.Item } =
+		await response.json();
+	if (itemGetResponse.status === false) {
+		return undefined;
+	}
+	const item: Item.Item = itemGetResponse.data as Item.Item;
+	return item;
+};
