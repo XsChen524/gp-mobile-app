@@ -2,7 +2,7 @@ import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Ionicons, Octicons } from "@expo/vector-icons";
-import { HomeScreen, SettingScreen, LoginScreen, SignupScreen, OrderScreen, OrderCreateScreen, OrderDetailScreen, TransactionScreen, TransactionDetailScreen, PostTranScreen } from '../screens';
+import { HomeScreen, SettingScreen, LoginScreen, SignupScreen, OrderScreen, OrderCreateScreen, OrderDetailScreen, TransactionScreen, TransactionDetailScreen, PostTranScreen, MyTxsScreen, MyTxDetailScreen } from '../screens';
 import { AppTabParamList, OrderStackParamList, SettingStackParamList, TransactionStackParamList } from ".";
 
 const Tab = createBottomTabNavigator<AppTabParamList>();
@@ -32,6 +32,20 @@ const AppTransactionStack: React.FC = () => {
 				component={PostTranScreen}
 				options={{
 					title: "Comments"
+				}}
+			/>
+			<TransactionStack.Screen
+				name='MyTransactionsStack'
+				component={MyTxsScreen}
+				options={{
+					title: "My Transactions"
+				}}
+			/>
+			<TransactionStack.Screen
+				name='MyTransactionDetailStack'
+				component={MyTxDetailScreen}
+				options={{
+					title: "Transaction Details"
 				}}
 			/>
 		</TransactionStack.Navigator>
