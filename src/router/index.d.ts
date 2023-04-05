@@ -27,7 +27,9 @@ export type TransactionStackParamList = {
 	PostTranStack: {
 		tx: import("../services/transaction/index").Tx.TxCreateReturnParams;
 	};
-	MyTransactionsStack: undefined;
+	MyTransactionsStack: {
+		txs: import("../services/transaction/index").Tx.TxUpdateReturnParams[];
+	};
 	MyTransactionDetailStack: {
 		tx: import("../services/transaction/index").Tx.TxUpdateReturnParams;
 	};
