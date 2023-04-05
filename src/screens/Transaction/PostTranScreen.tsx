@@ -76,7 +76,6 @@ const CommentForm: React.FunctionComponent<{ txId: number } & PostTranProps> = (
 			comment: formState.comment as string
 		}, authState.userToken as string).then((data) => {
 			if (data) {
-				console.log(data);
 				props.navigation.navigate('TransactionStack');
 			}
 		})

@@ -136,7 +136,6 @@ const TransactionDetailScreen: React.FunctionComponent<TransactionDetailProps> =
 						await checkSum(item.price) ?
 							createTransactionSync(authState.userId as number, item, authState.userToken as string).then((tx) => {
 								if (tx) {
-									console.log(tx);
 									props.navigation.navigate("PostTranStack", { tx });
 								}
 
