@@ -117,10 +117,8 @@ const PostTranScreen: React.FunctionComponent<PostTranProps> = (props: PostTranP
 			<ScrollView
 				width={"full"}
 				height={"full"}
-				borderWidth={"2"}
 				px={"10"}
 				paddingTop={"3"}
-				borderColor={"primary.600"}
 			>
 				<Center w="100%">
 					<TxDetail tx={tx} />
