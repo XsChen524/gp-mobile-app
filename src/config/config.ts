@@ -19,6 +19,7 @@ const config = {
 		},
 		transaction: {
 			index: "/transaction",
+			getAll: "/transaction/all/",
 		},
 	},
 };
