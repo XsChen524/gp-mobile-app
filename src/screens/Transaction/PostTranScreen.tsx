@@ -89,13 +89,13 @@ const CommentForm: React.FunctionComponent<{ txId: number } & PostTranProps> = (
 			</Heading>
 			<VStack space={3} mt="5">
 				<FormControl>
-					<FormControl.Label>Price you ask</FormControl.Label>
+					<FormControl.Label>Your rating</FormControl.Label>
 					<Input type='number' keyboardType='numeric' placeholder="1 - 5" onChangeText={(text) => {
 						handleChange("rate", text);
 					}} />
 				</FormControl>
 				<FormControl>
-					<FormControl.Label>Description</FormControl.Label>
+					<FormControl.Label>Comment</FormControl.Label>
 					<Input type='text' h={'20'} onChangeText={(text) => {
 						handleChange("comment", text);
 					}} />
