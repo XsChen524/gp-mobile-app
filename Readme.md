@@ -9,6 +9,6 @@ Node 16 LTS, Expo CLI. Please install from official website and refer to docs.
 ## Usage
 
 ```sh
-npm install
+npm i --legacy-peer-deps
 expo start --android
 ```
