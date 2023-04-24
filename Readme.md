@@ -1,6 +1,8 @@
 # COMP7506 Group Project
 
-This is the source file repo for COMP7506 group4 project
+This is the source repository for COMP7506 group4 project.
+
+This is a React-Native App for junk exchanging.
 
 ## Requirements
 
@@ -9,6 +11,9 @@ Node 16 LTS, Expo CLI. Please install from official website and refer to docs.
 ## Usage
 
 ```sh
-npm i --legacy-peer-deps
-expo start --android
+npm install expo-cli -g						// Install Expo-CLI
+npm i										// Install Dependencies
+expo start --android						// Launch in Android Emulator
+eas build -p android --profile preview		// Create build with EAS CLI
+adb install junk-exchange.apk				// Install .apk by Android ADB
 ```
