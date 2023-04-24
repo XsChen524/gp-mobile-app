@@ -6,7 +6,7 @@ This is a React-Native App for junk exchanging.
 
 ## Requirements
 
-Node 16 LTS, Expo CLI. Please install from official website and refer to docs.
+Node 16 LTS, Expo CLI. Please install from official website and refer to React Native/ Expo docs.
 
 ## Usage
 
